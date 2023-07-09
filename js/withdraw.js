@@ -10,11 +10,26 @@
 */
 
 document.getElementById("btn-withdraw").addEventListener("click", function () {
+  //console.log("yes");
   const newWithdrawAmount = getInputFieldValueById("withdraw-field");
-  const previousWithdrawTotal = getTextElementValueById("withdraw-total ");
-  const newWithdrawTotal = previousWithdrawTotal + newWithdrawAmount;
-  setTextElementValueById(withdraw - total, newWithdrawTotal);
+
+  const previousWithdrawTotal = getTextElementValueById("withdraw-total");
   const previousBalanceTotal = getTextElementValueById("balance-total");
-  const newBalanceTotal = previousBalanceTotal - newWithdrawAmount;
-  setTextElementValueById("balance-total", newBalanceTotal);
+  //console.log(newWithdrawAmount , previousWithdrawTotal);
+
+
+  //console.log(previousBalanceTotal);
+
+  if (newWithdrawAmount <= previousBalanceTotal && newWithdrawAmount != NaN) {
+    const newWithdrawTotal = previousWithdrawTotal + newWithdrawAmount;
+    console.log(newWithdrawAmount);
+    setTextElementValueById("withdraw-total", newWithdrawTotal);
+    setTextElementValueById("balance-total", previousBalanceTotal - newWithdrawAmount)
+  }
+
+
+  else {
+    return;
+  }
+
 });

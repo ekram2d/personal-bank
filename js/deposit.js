@@ -2,7 +2,7 @@
 document.getElementById("btn-deposit").addEventListener("click", function () {
   /* 
     1. get the element by id
-    2. get the value from the element
+    2. get the value from the elementthdraw-field
     3. convert string value to a number
     */
   const newDepositAmount = getInputFieldValueById("deposit-field");
@@ -13,13 +13,19 @@ document.getElementById("btn-deposit").addEventListener("click", function () {
   const previousDepositTotal = getTextElementValueById("deposit-total");
 
   // calculate new deposit total
-  const newDepositTotal = previousDepositTotal + newDepositAmount;
-  console.log(newDepositTotal, previousDepositTotal, newDepositAmount);
-  // set deposit total value
-  setTextElementValueById("deposit-total", newDepositTotal);
+  //console.log(newDepositAmount);
+  if (newDepositAmount) {
+    const newDepositTotal = previousDepositTotal + newDepositAmount;
 
-  // get previous balance by using the function
-  const previousBalanceTotal = getextElementValueById("balance-total");
-  const newBalanceTotal = previousBalanceTotal + newDepositAmount;
-  setTextElementValueById("balance-total", newBalanceTotal);
-);
+    const previousBalanceTotal = getTextElementValueById("balance-total");
+    //console.log(previousBalanceTotal)
+    const newBalanceTotal = previousBalanceTotal + newDepositAmount;
+    setTextElementValueById("balance-total", newBalanceTotal);
+    setTextElementValueById("deposit-total", newDepositTotal)
+
+
+  }
+  else {
+    return;
+  }
+});
